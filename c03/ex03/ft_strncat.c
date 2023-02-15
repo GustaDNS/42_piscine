@@ -1,37 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gdaniel- < gdaniel-@student.42porto.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/13 12:00:13 by gdaniel-          #+#    #+#             */
-/*   Updated: 2023/02/15 12:14:49 by gdaniel-         ###   ########.fr       */
+/*   Created: 2023/02/13 18:49:22 by gdaniel-          #+#    #+#             */
+/*   Updated: 2023/02/15 12:13:43 by gdaniel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 
-int	ft_strncmp(char *s1, char *s2, unsigned int n)
+char	*ft_strncat(char *dest, char *src, unsigned int nb)
 {
 	unsigned int	i;
+	unsigned int	len;
 
 	i = 0;
-	while ((s1[i] != '\0' || s2[i] != '\0') && (i < n))
-	{
-		if (s1[i] > s2[i])
-			return (1);
-		else if (s1[i] < s2[i])
-			return (-1);
+	len = 0;
+	while (dest[i] != '\0')
 		i++;
+	while (len < nb && src[len] != '\0')
+	{
+		dest[i] = src[len];
+		i++;
+		len++;
 	}
-	return (0);
+	dest[i] = '\0';
+	return (dest);
 }
-/*int	main ()
-{
-	char s1 [] = "Boas familia";
-	char s2 [] = "asdefasd";
-	
-	printf("%d", ft_strncmp (s1, s2, 8));
-	return (0);	
-}*/
+// int 	main ()
+// {
+// 	char s1 [] = "Boas familia";
+// 	char s2 [] = "Tamos junto";
+// 	printf ("%s", ft_strncat(s1, s2, 6));
+// }

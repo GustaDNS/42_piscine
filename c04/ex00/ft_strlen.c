@@ -1,37 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gdaniel- < gdaniel-@student.42porto.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/13 12:00:13 by gdaniel-          #+#    #+#             */
-/*   Updated: 2023/02/15 12:14:49 by gdaniel-         ###   ########.fr       */
+/*   Created: 2023/02/13 16:27:01 by gdaniel-          #+#    #+#             */
+/*   Updated: 2023/02/13 16:52:38 by gdaniel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 
-int	ft_strncmp(char *s1, char *s2, unsigned int n)
+int	ft_strlen(char *str)
 {
-	unsigned int	i;
+	int	x;
 
-	i = 0;
-	while ((s1[i] != '\0' || s2[i] != '\0') && (i < n))
+	x = 0;
+	while (str [x] != '\0')
 	{
-		if (s1[i] > s2[i])
-			return (1);
-		else if (s1[i] < s2[i])
-			return (-1);
-		i++;
+		x++;
 	}
-	return (0);
+	return (x);
 }
-/*int	main ()
-{
-	char s1 [] = "Boas familia";
-	char s2 [] = "asdefasd";
-	
-	printf("%d", ft_strncmp (s1, s2, 8));
-	return (0);	
-}*/
+// int	main()
+// {
+// 	char *a = "Finalmente estou a perceber";
+// 	printf ("%d", ft_strlen(a));
+// }

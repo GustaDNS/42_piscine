@@ -1,37 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gdaniel- < gdaniel-@student.42porto.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/13 12:00:13 by gdaniel-          #+#    #+#             */
-/*   Updated: 2023/02/15 12:14:49 by gdaniel-         ###   ########.fr       */
+/*   Created: 2023/02/13 19:24:24 by gdaniel-          #+#    #+#             */
+/*   Updated: 2023/02/15 12:13:35 by gdaniel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 
-int	ft_strncmp(char *s1, char *s2, unsigned int n)
+char	*ft_strstr(char *str, char *to_find)
 {
-	unsigned int	i;
+	int	i;
+	int	j;
 
 	i = 0;
-	while ((s1[i] != '\0' || s2[i] != '\0') && (i < n))
+	j = 0;
+	if (to_find[j] == '\0')
+		return (str);
+	while (str[i] != '\0')
 	{
-		if (s1[i] > s2[i])
-			return (1);
-		else if (s1[i] < s2[i])
-			return (-1);
+		while (str[i + j] == to_find[j] && str [i + j] != '\0')
+		j++;
+		if (to_find[j] == '\0')
+			return (str + i);
 		i++;
+		j = 0;
 	}
 	return (0);
-}
-/*int	main ()
+}	
+/*int	main()
 {
-	char s1 [] = "Boas familia";
-	char s2 [] = "asdefasd";
-	
-	printf("%d", ft_strncmp (s1, s2, 8));
+	char	str[40] = "Hello find substring";
+	char	to_find[30] = "find";
+
+	printf("%s", ft_strstr(str, to_find));
 	return (0);	
 }*/
