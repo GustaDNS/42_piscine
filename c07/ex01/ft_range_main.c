@@ -6,7 +6,7 @@
 /*   By: gdaniel- < gdaniel-@student.42porto.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 17:10:12 by gdaniel-          #+#    #+#             */
-/*   Updated: 2023/02/19 17:13:39 by gdaniel-         ###   ########.fr       */
+/*   Updated: 2023/02/21 12:36:46 by gdaniel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,22 +34,22 @@ int	*ft_range(int min, int max)
 	}
 	return (buffer);
 }
-// int		main(void)
-// {
-// 	int	min;
-// 	int	max;
-// 	int	*tab;
-// 	int	i = 0;
-// 	int	size;
+int		main(void)
+{
+	int	min;
+	int	max;
+	int	*tab;
+	int	i = 0;
+	int	size;
 
-// 	min = 5;
-// 	max = 10;
-// 	size = max - min;
-// 	tab = ft_range(min, max);
-// 	while(i < size)
-// 	{
-// 		printf("%d, ", tab[i]);
-// 		i++;
-// 	}
+	min = 5;
+	max = 10;
+	size = max - min;
+	tab = ft_range(min, max);
+	while(i < size)
+	{
+		printf("%d, ", tab[i]);
+		i++;
+	}
 
-// }
+}

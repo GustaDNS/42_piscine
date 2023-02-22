@@ -6,14 +6,57 @@
 /*   By: gdaniel- < gdaniel-@student.42porto.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 17:14:43 by gdaniel-          #+#    #+#             */
-/*   Updated: 2023/02/19 17:17:08 by gdaniel-         ###   ########.fr       */
+/*   Updated: 2023/02/21 12:37:13 by gdaniel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
 
-int 	*ft_ultimate_range(int **range, int min,  int max)
+int	ft_ultimate_range(int **range, int min, int max)
 {
+	int		bound;
+	int		index;
+	int		*buffer;
+	int		*d;
 
+	if (min >= max)
+	{
+		*range = 0;
+		return (0);
+	}
+	bound = max - min;
+	d = (buffer = malloc(bound * sizeof(int)));
+	if (!d)
+	{
+		*range = 0;
+		return (-1);
+	}
+	*range = buffer;
+	index = 0;
+	while (index < bound)
+	{
+		buffer[index] = min + index;
+		index++;
+	}
+	return (bound);
 }
+
+// int		main(void)
+// {
+// 	int	min;
+// 	int	max;
+// 	int	*tab;
+// 	int	size;
+// 	int	i = 0;
+
+// 	min = 5;
+// 	max = 10;
+// 	size = ft_ultimate_range(&tab, min, max);
+// 	while(i < size)
+// 	{
+// 		printf("%d, ", tab[i]);
+// 		i++;
+// 	}
+
+// }
