@@ -6,48 +6,99 @@
 /*   By: gudaniel <gudaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 17:45:34 by gudaniel          #+#    #+#             */
-/*   Updated: 2024/01/03 18:49:10 by gudaniel         ###   ########.fr       */
+/*   Updated: 2024/01/04 11:46:23 by gudaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
+
+int	ft_strlen(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
+
+int	ft_lngh(char **strs, int size, char *sep)
+{
+	int	i;
+	int	lng;
+
+	i = 0;
+	lng = 0;
+	while (i < size)
+	{
+		lng = lng + ft_strlen(strs[i]);
+		i++;
+	}
+	lng = lng + (size - 1) * ft_strlen(sep) + 1;
+	return (lng);
+}
+
+char	*ft_strcat(char *dest, char *src)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (dest[i])
+		i++;
+	while (src[j])
+	{
+		dest[i + j] = src[j];
+		j++;
+	}
+	dest[i + j] = 0;
+	return (dest);
+}
 
 char	*ft_strjoin(int size, char **strs, char *sep)
 {
-	int		a;
 	int		i;
-	int		j;
-	int		c;
-	char	*catsrt;
+	char	*str;
 
-	catsrt = malloc(sizeof(strs) + (sizeof(sep) * (size - 1)));
+	if (size == 0)
+	{
+		str = malloc(sizeof(char));
+		*str = 0;
+		return (str);
+	}
+	str = malloc(sizeof(char) * ft_lngh(strs, size, sep));
+	if (!str)
+		return (NULL);
+	*str = 0;
 	i = 0;
-	a = 0;
 	while (i < size)
 	{
-		c = 0;
-		j = 0;
-		while (strs[i][j])
-			catsrt[a++] = strs[i][j++];
-		if (i == size - 1)
-		{
-			catsrt[a] = '\0';
-			return (catsrt);
-		}
-		while (sep[c])
-			catsrt[a++] = sep[c++];
+		ft_strcat(str, strs[i]);
+		if (i < size - 1)
+			ft_strcat(str, sep);
 		i++;
 	}
-	return (catsrt);
+	return (str);
 }
-// int	main(void)
+// int main(void)
 // {
-// 	char	*tab[4];
-// 	tab[0] = "gustavo";
-// 	tab[1] = "Daniel";
-// 	tab[2] = "Siqueira";
-// 	tab[3] = "pizzuti";
-// 	printf("%s", ft_strjoin(4, tab, "| "));
-// 	return (0);
+//     char    **strs;
+//     char    *separator;
+//     char    *result;
+//     int size;
+
+//     size = 3;
+//     strs = (char **)malloc(3 * sizeof(char *));
+//     strs[0] = (char *)malloc(sizeof(char) * 5 + 1);
+//     strs[1] = (char *)malloc(sizeof(char) * 7 + 1);
+//     strs[2] = (char *)malloc(sizeof(char) * 14 + 1);
+//     strs[0] = "Hello";
+//     strs[1] = "friend,";
+//     strs[2] = "you are awesome";
+//     separator = " ";
+//     result = ft_strjoin(size, strs, separator);
+//     printf("%s$\n", result);
+//     free(result);
 // }
